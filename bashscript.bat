@@ -6,10 +6,10 @@
 @echo:: [*] 2. Resetadores Netsh
 @echo:: [*] 3. Systeminfo 
 @echo:: [*] 4. Sair do terminal 
+@echo::::::::::::::::::::::::::::::::::::::::::::
 @echo:: [*] Github:github.com/suchsoak
 @echo:: [*] V.1.0.0
 @echo:: [*] BY: ~#M?x
-@echo::::::::::::::::::::::::::::::::::::::::::::
 set /p escolha= escolha uma opcao:
 if %escolha% equ 1 goto escolha1 
 if %escolha% equ 2 goto escolha2
