@@ -1,9 +1,13 @@
 # bashscript
 
-Bash scripts para facilitar sua vida e também para se divertir
+### Bash scripts para facilitar sua vida e também para se divertir
 
 **Para simplificar seu uso, tomei a decisão de combinar meus scripts bash, que antes eram separados.**
 
+>[!NOTE]
+>Por enquanto a apenas 3 script. Porém, pretendo colocar mais. Enquanto isso se quiser mais opções de script vá no meu outro github com scrips escritos em powershell
+>
+>https://github.com/suchsoak/Powershell_script 
 
 <summary>Reset-Para-Netsh</summary>
 
@@ -258,4 +262,7 @@ Abra o arquivo.bat como adiminstrador.
 
 License & Copyright
 -----------------------
-MIT
+MIT License Copyright (c) 2023 ~#M?x
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/m100047r)
+
