@@ -199,12 +199,6 @@ date /t >> informacoes.txt
 
 ```
 
-## Se quiser saber mais sobre os comandos apresentados no script:
-
-| Libraries |  Links |
-| ------ | ------ |
-|  Systeminfo wifi | https://github.com/suchsoak/Systeminfo_Windows/wiki
-
 ## Pesquisas Relacionadas:
 
 | Libraries |  Links |
@@ -228,7 +222,7 @@ Abra o arquivo.bat como adiminstrador.
 > Verificadores Para Profissionais De Ti. Um simples script para verificar arquivos do hd ou ssd.
 
 <p align="center">
-  <img src="https://github.com/suchsoak/bashscript/blob/main/disk.png" alt="disk.png">
+  <img src="https://github.com/suchsoak/bashscript/blob/main/diskimg/disk.png" alt="disk.png">
 </p>
 
 # Como usar
