@@ -53,6 +53,10 @@ Via Sistema Operacional Gráfico:
 <li>netsh int tcp reset all</li>  
 <li>netsh int teredo reset all</li> 
 <li>ipconfig /renew</li>
+<li>nnetsh advfirewall firewall add rule name="Block 22" dir=in action=block protocol=TCP localport=22</li>
+<li>netsh advfirewall firewall add rule name="Block 23" dir=in action=block protocol=TCP localport=23</li>
+<li>netsh advfirewall firewall add rule name="Block 80" dir=in action=block protocol=TCP localport=80</li>
+
 </ul>
 
 # Mais informações sobre os comandos utilizados:
@@ -156,27 +160,14 @@ Para obter informações do ip e relacionado a endereço, foi utilizado o curl j
 
 ```sh
 
-@echo IP:
-@echo.
-curl -s ipinfo.io/ip 
-@echo.
-@echo.
-@echo Cidade:
-
-@echo.
-
-curl -s ipinfo.io/city
-
-@echo.
-
-@echo Codigo-Postal:
-@echo.
-curl -s ipinfo.io/postal
-@echo.
-@echo Pais:
-@echo.
-curl -s ipinfo.io/country
-@echo.
+curl -s ipinfo.io | findstr "ip"
+curl -s ipinfo.io | findstr "country"
+curl -s ipinfo.io | findstr "region"
+curl -s ipinfo.io | findstr "postal"
+curl -s ipinfo.io | findstr "city"
+curl -s ipinfo.io | findstr "hostname"
+curl -s ipinfo.io | findstr "loc"
+curl -s ipinfo.io | findstr "org"
 
 ```
 
@@ -244,6 +235,7 @@ Abra o arquivo.bat como adiminstrador.
 <li>dism /Online /Cleanup-Image /CheckHealth</li>
 <li>chkdsk</li>  
 <li>wmic</li>  
+<li>del *</li>  
 </ul>
 
 ## Documentação Dos Codigos Utilizados:
