@@ -1,15 +1,24 @@
 @echo off
+cls
 @echo.
 @echo.
 @echo::::::::::::::::::::::::::::::::::::::::::::
+color 2
 @echo:: [*] 1. Verificar discos
+timeout 1 >null
 @echo:: [*] 2. Resetadores Netsh
-@echo:: [*] 3. Systeminfo 
+color 1
+timeout 1 > null
+@echo:: [*] 3. Systeminfo
+color 7 
+timeout 1 >null
 @echo:: [*] 4. Sair do terminal 
 @echo::::::::::::::::::::::::::::::::::::::::::::
-@echo:: [*] Github:github.com/suchsoak
-@echo:: [*] V.1.0.0
-@echo:: [*] BY: ~#M?x
+@echo:: [!] Github:github.com/suchsoak
+@echo:: [!] V.1.0.1
+@echo:: [!] BY: ~#M?x
+@echo::::::::::::::::::::::::::::::::::::::::::::
+@echo.
 set /p escolha= escolha uma opcao:
 if %escolha% equ 1 goto escolha1 
 if %escolha% equ 2 goto escolha2
@@ -71,13 +80,45 @@ timeout 2 >null
 dism /Online /Cleanup-Image /CheckHealth
 cls
 @echo.
+@echo -------------------------
+@echo  [*] chkdsk
+@echo -------------------------
+timeout 2 >null
+chkdsk
+cls
+@echo.
+@echo -------------------------
+@echo  [*] Apagando Arquivos Temporarios
+@echo -------------------------
+timeout 2 >null
+cd %temp%
+del *
+cls
+@echo.
+@echo -------------------------
+@echo  [*] Identificando Disco
+@echo -------------------------
+@echo.
+
+wmic diskdrive get mediatype | findstr /c:"Fix hard disk media" > null
+
+if %errorlevel% == 0 (
+    @echo [*] Recomendo desfragmentar o HD
+) else (
+    @echo [*] SSD nao recomendo desfragmentar
+)
+
+timeout 3 >null
 @echo [*] Processo Finalizado...
 timeout 3 >null
 @echo.
-
+cls
+@echo.
+@echo.
 @echo [!] caso queria fazer uma verificacao mais completa existe o comando chkdsk /r.
+@echo.
 @echo [!] Porem nesse comando seu computador precisara ser reiniciado e isso levara tempo.
-
+@echo.
 @echo::::::::::::::::::::::::::::::::::::::::::::--
 @echo:: [!] AVISO o processo levara um tempo, dependendo da maquina.
 @echo::::::::::::::::::::::::::::::::::::::::::::-- 
@@ -104,8 +145,8 @@ chkdsk /r
 @echo:: [!] Por padrao, o seu computador não irar ser reiniciado depois do comando, porem e recomendavel.
 @echo::::::::::::::::::::::::::::::::::::::::::::
 
-
-:escolhaB 
+:escolhaB
+cls 
 @echo.
 @echo [*] Saindo Do Terminal...
 timeout 3 >null
@@ -122,6 +163,94 @@ cls
 @echo github: https://github.com/suchsoak
 @echo -----------------------------------
 @echo.
+@echo.
+
+@echo::::::::::::::::::::::::::::::::::::::::::::
+@echo:: [*] S. Colocar Regras De Firewall
+@echo:: [*] N. Nao Colocar Regras De Firewall
+@echo:::::::::::::::::::::::::::::::::::::::::::: 
+
+
+set /p escolha=  escolha uma opcao: 
+
+if %escolha% == S goto escolhaS
+if %escolha% == N goto escolhaN
+
+:escolhaS
+
+cls
+color 1
+@echo.
+@echo Regras De Firewall
+@echo.
+timeout 2 > null
+netsh advfirewall firewall add rule name="Block 22" dir=in action=block protocol=TCP localport=22 
+@echo.
+timeout 2 >null
+netsh advfirewall firewall add rule name="Block 23" dir=in action=block protocol=TCP localport=23 
+@echo.
+timeout 2 >null
+@echo
+netsh advfirewall firewall add rule name="Block 80" dir=in action=block protocol=TCP localport=80 
+timeout 2 >null
+@echo [!] Informacoes De Rede: 
+color 7
+@echo.
+netsh wlan show profiles name="Interface" key=clear | findstr "Nome SSID"
+netsh wlan show profiles name="Interface" key=clear | findstr "Chave"
+netsh wlan show interfaces | findstr "Perfil" 
+netsh wlan show interfaces | findstr "Estado"
+netsh wlan show interfaces | findstr "Sinal"
+netsh wlan show interfaces | findstr "Canal"
+netsh wlan show interfaces | findstr "Descrição"
+netsh wlan show interfaces | findstr "BSSID"
+netsh interface ipv4 show addresses "Wi-Fi" | findstr "Endereço IP"
+timeout 3 >null
+@echo::::::::::::::::::::::::::::::::::::::::::::
+@echo:: [!] Resetadores de rede
+@echo::::::::::::::::::::::::::::::::::::::::::::
+@echo.
+@echo::::::::::::::::::::::::::::::::::::::::::::
+@echo:: [*] Configurando ipconfig...
+@echo:::::::::::::::::::::::::::::::::::::::::::: 
+timeout /t 4 >null
+ipconfig /renew
+cls
+@echo::::::::::::::::::::::::::::::::::::::::::::
+@echo:: [!] Configuracao de ip concluida.
+@echo::::::::::::::::::::::::::::::::::::::::::::
+timeout /t 3 > null
+@echo.
+@echo::::::::::::::::::::::::::::::::::::::::::::
+@echo:: [!] Configurando Netsh... 
+@echo::::::::::::::::::::::::::::::::::::::::::::
+timeout /t 6 >null
+@echo.
+
+netsh winsock reset all
+netsh int 6to4 reset all
+netsh int ipv4 reset all
+netsh int ipv6 reset all
+netsh int httpstunnel reset all
+netsh int isatap reset all
+netsh int portproxy reset all
+netsh int tcp reset all
+netsh int teredo reset all
+netsh int ip reset
+netsh interface reset all
+
+cls
+
+@echo.
+@echo -------------------------------------------------
+@echo Netsh configurado, agora reinicie o computador.
+@echo -------------------------------------------------
+@echo.
+@pause
+exit
+
+:escolhaN
+cls
 color 4
 timeout 4 >null
 @echo [!] Informacoes De Rede: 
@@ -136,7 +265,7 @@ netsh wlan show interfaces | findstr "Canal"
 netsh wlan show interfaces | findstr "Descrição"
 netsh wlan show interfaces | findstr "BSSID"
 netsh interface ipv4 show addresses "Wi-Fi" | findstr "Endereço IP"
-
+timeout 3 >null
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo:: [!] Resetadores de rede
 @echo::::::::::::::::::::::::::::::::::::::::::::
@@ -183,6 +312,7 @@ exit
 :escolha3
 
 @echo off
+cls
 color 4
 @echo.
 @echo.
@@ -207,26 +337,14 @@ timeout /t 2 > null
 @echo.
 @echo IP:
 @echo.
-curl -s ipinfo.io/ip 
-@echo.
-@echo.
-@echo Cidade:
-
-@echo.
-
-curl -s ipinfo.io/city
-
-@echo.
-
-@echo Codigo-Postal:
-@echo.
-curl -s ipinfo.io/postal
-@echo.
-@echo Pais:
-@echo.
-curl -s ipinfo.io/country
-@echo.
-@echo --------------------
+curl -s ipinfo.io | findstr "ip"
+curl -s ipinfo.io | findstr "country"
+curl -s ipinfo.io | findstr "region"
+curl -s ipinfo.io | findstr "postal"
+curl -s ipinfo.io | findstr "city"
+curl -s ipinfo.io | findstr "hostname"
+curl -s ipinfo.io | findstr "loc"
+curl -s ipinfo.io | findstr "org"
 @echo.
 @echo [!] Informacoes Adicionais:
 @echo.
@@ -277,7 +395,6 @@ timeout /t 5 > null
 @echo.
 color 2
 timeout /t 2 > null
-wmic baseboard get Manufacturer 
 wmic BIOS get name
 wmic bios get ReleaseDate
 wmic baseboard get product
@@ -324,21 +441,14 @@ timeout /t 2 > null
 @echo. >> informacoes.txt
 @echo IP: >> informacoes.txt
 @echo. >> informacoes.txt
-curl -s ipinfo.io/ip >> informacoes.txt
-@echo. >> informacoes.txt
-@echo. >> informacoes.txt
-@echo Cidade: >> informacoes.txt
-@echo. >> informacoes.txt
-curl -s ipinfo.io/city >> informacoes.txt
-@echo. >> informacoes.txt
-@echo Codigo-Postal: >> informacoes.txt
-@echo. >> informacoes.txt
-curl -s ipinfo.io/postal >> informacoes.txt
-@echo. >> informacoes.txt
-@echo Pais: >> informacoes.txt
-@echo. >> informacoes.txt
-curl -s ipinfo.io/country >> informacoes.txt
-@echo. >> informacoes.txt
+curl ipinfo.io | findstr "ip" >> informacoes.txt
+curl ipinfo.io | findstr "country" >> informacoes.txt
+curl ipinfo.io | findstr "region" >> informacoes.txt
+curl ipinfo.io | findstr "postal" >> informacoes.txt
+curl ipinfo.io | findstr "city" >> informacoes.txt
+curl ipinfo.io | findstr "hostname" >> informacoes.txt
+curl ipinfo.io | findstr "loc" >> informacoes.txt
+curl ipinfo.io | findstr "org" >> informacoes.txt
 @echo -------------------- >> informacoes.txt
 @echo. >> informacoes.txt
 @echo [!] Informacoes Adicionais: >> informacoes.txt
@@ -418,6 +528,5 @@ set /p sair=
 if "%input%"==""(
   exit
 )
-
 :escolha4
 exit
