@@ -3,6 +3,8 @@
 
 ![WINDOWS](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
+>[!IMPORTANT]
+> Execute o Script como Administrador
 
 ### Bash scripts para facilitar sua vida e também para se divertir
 
