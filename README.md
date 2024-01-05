@@ -222,6 +222,28 @@ Abra o arquivo.bat como adiminstrador.
   <img src="https://github.com/suchsoak/bashscript/blob/main/diskimg/disk.png" alt="disk.png">
 </p>
 
+<details>
+
+<summary>Windows Update</summary>
+
+`net start bits`: Este comando inicia o serviço Background Intelligent Transfer Service (BITS). O BITS é um serviço do Windows que facilita a transferência assíncrona, priorizada e limitada de arquivos entre máquinas usando a largura de banda da rede ociosa.
+
+`net start wuauserv`: Este comando inicia o serviço Windows Update (wuauserv). O serviço Windows Update é responsável por gerenciar e fornecer atualizações para o sistema operacional Windows.
+
+`net start cryptSvc`: Este comando inicia o serviço Cryptographic Services (cryptSvc). O serviço Cryptographic Services fornece funções criptográficas essenciais para o Windows, como criptografia, descriptografia e operações com certificados.
+
+`net start msiserver`: Este comando inicia o serviço Windows Installer (msiserver). O serviço Windows Installer é responsável por instalar, modificar e remover pacotes de software no formato MSI (Microsoft Installer).
+
+`SC config wuauserv start= auto`: Este comando usa o comando SC (Service Control) para configurar o tipo de inicialização do serviço Windows Update (wuauserv) como automático. Configurar o tipo de inicialização como automático garante que o serviço seja iniciado automaticamente quando o sistema inicializar.
+
+`SC config bits start= auto`: Este comando usa o comando SC para configurar o tipo de inicialização do serviço Background Intelligent Transfer Service (bits) como automático. Configurar o tipo de inicialização como automático garante que o serviço seja iniciado automaticamente quando o sistema inicializar.
+
+`SC config cryptsvc start= auto`: Este comando usa o comando SC para configurar o tipo de inicialização do serviço Cryptographic Services (cryptsvc) como automático. Configurar o tipo de inicialização como automático garante que o serviço seja iniciado automaticamente quando o sistema inicializar.
+
+`SC config trustedinstaller start= auto`: Este comando usa o comando SC para configurar o tipo de inicialização do serviço TrustedInstaller (trustedinstaller) como automático. O serviço TrustedInstaller é responsável por instalar, modificar e remover atualizações do Windows e componentes opcionais.
+
+</details>
+
 # Como usar
 
 ```sh
