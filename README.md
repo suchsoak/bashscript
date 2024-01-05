@@ -15,9 +15,9 @@
 >
 >https://github.com/suchsoak/Powershell_script 
 
-<summary>Reset-Para-Netsh</summary>
-
 <details>
+
+<summary>Reset-Para-Netsh</summary>
 
 # Resetar-Configurações-Da-Internet-No-Computador.
 
@@ -71,9 +71,9 @@ Via Sistema Operacional Gráfico:
  
 </details>
 
-<summary>Systeminfo simplificado</summary>
-
 <details>
+
+<summary>Systeminfo simplificado</summary>
 
 # Um systeminfo simplificado
 
@@ -207,10 +207,10 @@ date /t >> informacoes.txt
 
 </details>
 
+<details>
 
 <summary>Verificadores De Disco</summary>
 
-<details>
 
 # HD_Verificadores_Bat
 
