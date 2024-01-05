@@ -555,7 +555,10 @@ SC config bits start= auto
 SC config cryptsvc start= auto 
 SC config trustedinstaller start= auto
 
+@echo.
 @echo Verifique nas configuracoes se o windows esta atualizando.
+@echo.
+@pause
 
 :escolha5
 exit
