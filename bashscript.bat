@@ -1,7 +1,6 @@
 @echo off
 cls
 @echo.
-@echo.
 @echo::::::::::::::::::::::::::::::::::::::::::::
 color 2
 @echo:: [*] 1. Verificar discos
@@ -12,11 +11,12 @@ timeout 1 > null
 @echo:: [*] 3. Systeminfo
 color 7 
 timeout 1 >null
-@echo:: [*] 4. Sair do terminal 
+@echo:: [*] 4. Windows Update 
+@echo:: [*] 5. Sair do terminal
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo:: [!] Github:github.com/suchsoak
-@echo:: [!] V.1.0.1
-@echo:: [!] BY: ~#M?x
+@echo:: [!] V.1.0.2
+@echo:: [!] BY: suchsoak
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo.
 set /p escolha= escolha uma opcao:
@@ -37,6 +37,18 @@ cls
 timeout 4 >null
 @echo.
 @echo [!] informacoes de disco:
+echo "|oooooooooooooooooooooooooooooo|"
+echo "|oooooooooooooooo++:++ooooooooo|"
+echo "|oooooooooooo++:.~~::::+++ooooo|"
+echo "|oooooooooo++:++.....~:~~:~~+oo|"
+echo "|ooooooo++:++++oo:~~.~::~.  :oo|"
+echo "|ooo::+:~:++++oo+++:::~.  .:ooo|"
+echo "|oo+    ~:++ooo++:~:~.  .~+oooo|"
+echo "|ooo+:.   .~:+:~::~.   :+oooooo|"
+echo "|oooo+++~.   .~~~.   :+oooooooo|"
+echo "|ooooooo++:~.  .  .:+oooooooooo|"
+echo "|ooooooooo+o+:..~:ooooooooooooo|"
+echo "|ooooooooooo+oo+ooooooooooooooo|"
 @echo.
 wmic diskdrive list brief
 @echo.
@@ -83,16 +95,16 @@ cls
 @echo -------------------------
 @echo  [*] chkdsk
 @echo -------------------------
-timeout 2 >null
+timeout 3 >null
 chkdsk
 cls
 @echo.
 @echo -------------------------
 @echo  [*] Apagando Arquivos Temporarios
 @echo -------------------------
-timeout 2 >null
 cd %temp%
 del *
+timeout 3 >null
 cls
 @echo.
 @echo -------------------------
@@ -105,7 +117,7 @@ wmic diskdrive get mediatype | findstr /c:"Fix hard disk media" > null
 if %errorlevel% == 0 (
     @echo [*] Recomendo desfragmentar o HD
 ) else (
-    @echo [*] SSD nao recomendo desfragmentar
+    @echo [*] SSD nao e recomendo desfragmentar
 )
 
 timeout 3 >null
@@ -183,16 +195,16 @@ color 1
 @echo.
 @echo Regras De Firewall
 @echo.
-timeout 2 > null
+timeout 1 > null
 netsh advfirewall firewall add rule name="Block 22" dir=in action=block protocol=TCP localport=22 
 @echo.
-timeout 2 >null
+timeout 1 >null
 netsh advfirewall firewall add rule name="Block 23" dir=in action=block protocol=TCP localport=23 
 @echo.
-timeout 2 >null
-@echo
+timeout 1 >null
+@echo.
 netsh advfirewall firewall add rule name="Block 80" dir=in action=block protocol=TCP localport=80 
-timeout 2 >null
+timeout 3 >null
 @echo [!] Informacoes De Rede: 
 color 7
 @echo.
@@ -213,18 +225,19 @@ timeout 3 >null
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo:: [*] Configurando ipconfig...
 @echo:::::::::::::::::::::::::::::::::::::::::::: 
-timeout /t 4 >null
+timeout /t 2 >null
 ipconfig /renew
+timeout /t 2 >null
 cls
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo:: [!] Configuracao de ip concluida.
 @echo::::::::::::::::::::::::::::::::::::::::::::
-timeout /t 3 > null
+timeout /t 2 > null
 @echo.
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo:: [!] Configurando Netsh... 
 @echo::::::::::::::::::::::::::::::::::::::::::::
-timeout /t 6 >null
+timeout /t 1 >null
 @echo.
 
 netsh winsock reset all
@@ -238,7 +251,7 @@ netsh int tcp reset all
 netsh int teredo reset all
 netsh int ip reset
 netsh interface reset all
-
+timeout /t 3 >null
 cls
 
 @echo.
@@ -252,7 +265,7 @@ exit
 :escolhaN
 cls
 color 4
-timeout 4 >null
+timeout 2 >null
 @echo [!] Informacoes De Rede: 
 color 7
 @echo.
@@ -273,7 +286,7 @@ timeout 3 >null
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo:: [*] Configurando ipconfig...
 @echo:::::::::::::::::::::::::::::::::::::::::::: 
-timeout /t 4 >null
+timeout /t 2 >null
 ipconfig /renew
 cls
 @echo::::::::::::::::::::::::::::::::::::::::::::
@@ -284,7 +297,7 @@ timeout /t 3 > null
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo:: [!] Configurando Netsh... 
 @echo::::::::::::::::::::::::::::::::::::::::::::
-timeout /t 6 >null
+timeout /t 2 >null
 @echo.
 
 netsh winsock reset all
@@ -298,7 +311,7 @@ netsh int tcp reset all
 netsh int teredo reset all
 netsh int ip reset
 netsh interface reset all
-
+timeout /t 3 >null
 cls
 
 @echo.
@@ -529,4 +542,20 @@ if "%input%"==""(
   exit
 )
 :escolha4
+
+net start bits
+net start wuauserv
+net start cryptSvc
+net start msiserver
+
+SC config wuauserv start= auto 
+
+SC config bits start= auto 
+
+SC config cryptsvc start= auto 
+SC config trustedinstaller start= auto
+
+@echo Verifique nas configuracoes se o windows esta atualizando.
+
+:escolha5
 exit
