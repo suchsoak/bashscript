@@ -541,22 +541,24 @@ set /p sair=
 if "%input%"==""(
   exit
 )
+
 :escolha4
 
-net start bits
+net stop wuauserv
+net stop bits
+net stop cryptsvc
+net stop trustedinstaller
+net stop appidsvc
+ren %systemroot%\softwaredistribution softwaredistribution.bak
+ren %systemroot%\system32\catroot2 catroot2.bak
 net start wuauserv
-net start cryptSvc
-net start msiserver
-
-SC config wuauserv start= auto 
-
-SC config bits start= auto 
-
-SC config cryptsvc start= auto 
-SC config trustedinstaller start= auto
+net start bits
+net start cryptsvc
+net stop trustedinstaller
+net start appidsvc
 
 @echo.
-@echo Verifique nas configuracoes se o windows esta atualizando.
+@echo Verifique nas configuracoes se o windows esta atualizando. E necessario reiniciar o computador.
 @echo.
 @pause
 
