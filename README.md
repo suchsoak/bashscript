@@ -11,9 +11,35 @@
 **Para simplificar seu uso, tomei a decisão de combinar meus scripts bash, que antes eram separados.**
 
 >[!NOTE]
->Por enquanto a apenas 4 script. Porém, pretendo colocar mais. Enquanto isso se quiser mais opções de script vá no meu outro github com scrips escritos em powershell
+>Por enquanto a apenas 5 script. Porém, pretendo colocar mais. Enquanto isso se quiser mais opções de script vá no meu outro github com scrips escritos em powershell
 >
 >https://github.com/suchsoak/Powershell_script
+
+<details>
+
+<summary>Marca Windows</summary>
+
+
+Este script ele irá limpar o cache da chave windows o que você terar que colocar novamente caso utilize o script. Este script permite também, fazer com que aquela marca do windows: "Ative o windows", ela simplesmente desapareça quando reiniciar a maquina quando o script tiver sido utilizado.
+
+`SLMGR.VBS /CPKY`: Este comando é usado para limpar a chave do produto do registro do Windows. Ele remove a chave do produto sem desinstalá-la do sistema. Isso pode ser útil para impedir que programas maliciosos acessem a chave do produto por meio do registro.
+
+`SLMGR.VBS /CKMS`: Este comando é usado para limpar o nome do servidor de Gerenciamento de Chaves (KMS) usado para ativação. O KMS é um serviço da Microsoft que permite que organizações ativem seus sistemas operacionais Windows usando um servidor de rede local em vez de chaves de produto individuais. Este comando limpa o nome do servidor KMS, o que significa que o sistema não usará mais o KMS para ativação.
+
+`Net stop Sppsvc`: Este comando interrompe o serviço de Plataforma de Proteção de Software (Sppsvc). O Sppsvc é responsável por gerenciar a licença e ativação de software em sistemas Windows. Parar esse serviço pode ser útil em determinados cenários de solução de problemas ou ao realizar tarefas de manutenção específicas.
+
+`CD C:\Windows\System32\SPP\Store\2.0`: Este comando muda o diretório atual para a localização especificada. Neste caso, ele muda para a pasta "C:\Windows\System32\SPP\Store\2.0". Essa pasta é onde os arquivos de licença do Windows são armazenados.
+
+`Ren Tokens.dat Tokens.old`: Este comando renomeia o arquivo "Tokens.dat" para "Tokens.old". Isso pode ser útil para fazer backup do arquivo original ou para resolver problemas relacionados à ativação do Windows.
+
+`SLMGR.VBS /RILC`: Este comando reativa a licença de software do Windows. Ele reconstrói a licença de software no sistema, o que pode ser útil se a ativação do Windows estiver enfrentando problemas.
+
+| Marca d'água solicitando ativação do Windows |  Link |
+| ------ | ------ |
+|  Marca windows  | https://answers.microsoft.com/pt-br/windows/forum/all/marca-d%C3%A1gua-solicitando-ativa%C3%A7%C3%A3o-do/2ca8e29c-a54c-4498-baa6-22b04aa2b81c  
+
+
+</details>
 
 
 <details>
@@ -21,6 +47,8 @@
 <summary>Windows Update</summary>
 
 Para explicar o script, ele irar verificar como o comandos do net recursos do windows update para tudo ocorrer bem. Caso esteja tenho problemas como o windows update, pode para eles usando o stop no start assim você reinicia o seu sistema. Ai verifica se tudo está certo.
+
+> Os comandos com o "SC" funcionam apenas no terminal CMD windows, não funcionam no powershell. Já os demais como o net funcioname nos dois sem problema.
 
 ```sh
 
@@ -66,7 +94,6 @@ SC config trustedinstaller start= auto
 `SC config trustedinstaller start= auto`: Este comando usa o comando SC para configurar o tipo de inicialização do serviço TrustedInstaller (trustedinstaller) como automático. O serviço TrustedInstaller é responsável por instalar, modificar e remover atualizações do Windows e componentes opcionais.
 
 </details>
-
 
 <details>
 
