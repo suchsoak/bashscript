@@ -12,10 +12,11 @@ timeout 1 > null
 color 7 
 timeout 1 >null
 @echo:: [*] 4. Windows Update 
-@echo:: [*] 5. Sair do terminal
+@echo:: [*] 5. Remover marca windows 
+@echo:: [*] 6. Sair do terminal
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo:: [!] Github:github.com/suchsoak
-@echo:: [!] V.1.0.2
+@echo:: [!] V.1.0.3
 @echo:: [!] BY: suchsoak
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo.
@@ -23,7 +24,8 @@ set /p escolha= escolha uma opcao:
 if %escolha% equ 1 goto escolha1 
 if %escolha% equ 2 goto escolha2
 if %escolha% equ 3 goto escolha3
-if %escolha% equ 4 goto escolha4
+if %escolha% equ 5 goto escolha5
+if %escolha% equ 6 goto escolha6
 
 :escolha1
 
@@ -37,18 +39,6 @@ cls
 timeout 4 >null
 @echo.
 @echo [!] informacoes de disco:
-echo "|oooooooooooooooooooooooooooooo|"
-echo "|oooooooooooooooo++:++ooooooooo|"
-echo "|oooooooooooo++:.~~::::+++ooooo|"
-echo "|oooooooooo++:++.....~:~~:~~+oo|"
-echo "|ooooooo++:++++oo:~~.~::~.  :oo|"
-echo "|ooo::+:~:++++oo+++:::~.  .:ooo|"
-echo "|oo+    ~:++ooo++:~:~.  .~+oooo|"
-echo "|ooo+:.   .~:+:~::~.   :+oooooo|"
-echo "|oooo+++~.   .~~~.   :+oooooooo|"
-echo "|ooooooo++:~.  .  .:+oooooooooo|"
-echo "|ooooooooo+o+:..~:ooooooooooooo|"
-echo "|ooooooooooo+oo+ooooooooooooooo|"
 @echo.
 wmic diskdrive list brief
 @echo.
@@ -541,7 +531,6 @@ set /p sair=
 if "%input%"==""(
   exit
 )
-
 :escolha4
 
 net stop wuauserv
@@ -556,11 +545,37 @@ net start bits
 net start cryptsvc
 net stop trustedinstaller
 net start appidsvc
+SC config wuauserv start= auto 
+SC config bits start= auto 
+SC config cryptsvc start= auto 
+SC config trustedinstaller start= auto
+SC config wuauserv start= auto 
+SC config bits start= auto 
+SC config cryptsvc start= auto 
+SC config trustedinstaller start= auto
 
 @echo.
-@echo Verifique nas configuracoes se o windows esta atualizando. E necessario reiniciar o computador.
+@echo Verifique nas configuracoes se o windows esta atualizando.
+@echo Caso nao esteja reinicie a maquina.
 @echo.
 @pause
 
 :escolha5
+@echo --------------------
+@echo.
+@echo [*] github: https://github.com/suchsoak 
+@echo.
+@echo --------------------
+@echo.
+timeout /t 3 >null
+SLMGR.VBS /CPKY 
+SLMGR.VBS /CKMS 
+Net stop Sppsvc 
+CD C:\Windows\System32\SPP\Store\2.0 
+Ren Tokens.dat Tokens.old 
+SLMGR.VBS /RILC 
+@echo Agora reinicie a maquina.
+@pause
+
+:escolha6
 exit
