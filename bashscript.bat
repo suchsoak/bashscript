@@ -560,6 +560,7 @@ SC config trustedinstaller start= auto
 @echo Caso nao esteja reinicie a maquina.
 @echo.
 @pause
+exit
 
 :escolha5
 @echo --------------------
