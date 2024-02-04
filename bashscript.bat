@@ -24,6 +24,7 @@ set /p escolha= escolha uma opcao:
 if %escolha% equ 1 goto escolha1 
 if %escolha% equ 2 goto escolha2
 if %escolha% equ 3 goto escolha3
+if %escolha% equ 4 goto escolha4
 if %escolha% equ 5 goto escolha5
 if %escolha% equ 6 goto escolha6
 
