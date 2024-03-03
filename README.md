@@ -122,6 +122,7 @@ Via Sistema Operacional Gráfico:
 ```
 
 # Codigos utilizados:
+
 > Shell de Rede (netsh)
 
 <ul>
@@ -135,10 +136,7 @@ Via Sistema Operacional Gráfico:
 <li>netsh int tcp reset all</li>  
 <li>netsh int teredo reset all</li> 
 <li>ipconfig /renew</li>
-<li>nnetsh advfirewall firewall add rule name="Block 22" dir=in action=block protocol=TCP localport=22</li>
-<li>netsh advfirewall firewall add rule name="Block 23" dir=in action=block protocol=TCP localport=23</li>
-<li>netsh advfirewall firewall add rule name="Block 80" dir=in action=block protocol=TCP localport=80</li>
-
+<li>netsh advfirewall firewall add rule name="Block %porta%" dir=in action=block protocol=TCP localport=%porta% </li>
 </ul>
 
 # Mais informações sobre os comandos utilizados:
@@ -147,7 +145,7 @@ Via Sistema Operacional Gráfico:
 | ------ | ------ |
 |  shell de rede|  [https://learn.microsoft.com/pt-br/windows/win32/wmisdk/wmic](https://learn.microsoft.com/pt-br/windows-server/networking/technologies/netsh/netsh)
 |  Netsh | [https://learn.microsoft.com/pt-br/windows-server/networking/technologies/netsh/netsh](https://learn.microsoft.com/pt-br/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754516(v=ws.10)) 
-|  Ipconfig|  [https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/ipconfig](https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/ipconfig)
+|  Ipconfig |  [https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/ipconfig](https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/ipconfig)
  
 </details>
 
@@ -170,7 +168,7 @@ Execute ele de preferencia como administrador.
 > Já com o Informações.bat instalado, execute no terminal se preferir:
 
 ```sh
- start Informações.bat
+ start Informacoes.bat
 ```
 
 # Sobre o script
@@ -180,7 +178,6 @@ O script irar retornar informações sobre:
 processador
 
 ```sh
-
  @echo [!] Informacoes Do Processador:
 color 5
 timeout /t 6 > null
@@ -199,7 +196,6 @@ wmic CPU get name
 Disco
 
 ```sh
-
 @echo [!] Informacoes do disco:
 color 6
 timeout /t 5 > null
@@ -215,12 +211,20 @@ wmic path win32_VideoController get name
 wmic path win32_VideoController get name, adapterram, driverversion
 @echo.
 @echo --------------------
+```
+Memoria Ram
+
+```sh
+@echo [!] Informacoes da Memoria Ram:
+@echo.
+wmic memorychip get Manufacturer,Capacity,PartNumber,Speed,DeviceLocator
+echo.
+@echo --------------------
 
 ```
 Informações De Rede
 
 ```sh
-
 @echo [!] Informacoes De Rede:
 @echo.
 timeout /t 6 > null
@@ -232,10 +236,8 @@ netsh wlan show interfaces | findstr "Sinal"
 netsh wlan show interfaces | findstr "Canal"
 netsh wlan show interfaces | findstr "Descrição"
 netsh wlan show interfaces | findstr "BSSID"
-color 7
-@echo.
-@echo --------------------
-
+netsh wlan show interfaces | findstr "Criptografia"
+netsh wlan show interfaces | findstr "Faixa"
 ```
 
 Para obter informações do ip e relacionado a endereço, foi utilizado o curl junto como o ipinfo.io
@@ -316,8 +318,9 @@ Abra o arquivo.bat como adiminstrador.
 <li>dism /online /cleanup-image /restorehealth</li>
 <li>dism /Online /Cleanup-Image /CheckHealth</li>
 <li>chkdsk</li>  
-<li>wmic</li>  
-<li>del *</li>  
+<li>wmic</li> 
+<li>cd %temp%</li> 
+<li>del /F /Q *</li>  
 </ul>
 
 ## Documentação Dos Codigos Utilizados:
@@ -325,8 +328,9 @@ Abra o arquivo.bat como adiminstrador.
 | Libraries |  Links |
 | ------ | ------ |
 | verificador |   https://support.microsoft.com/pt-br/topic/use-a-ferramenta-verificador-de-arquivos-do-sistema-para-reparar-arquivos-de-sistema-ausentes-ou-corrompidos-79aa86cb-ca52-166a-92a3-966e85d4094e
-|  chkdsk | https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/chkdsk?tabs=event-viewer
+| chkdsk | https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/chkdsk?tabs=event-viewer
 | Repair | https://learn.microsoft.com/pt-br/windows-hardware/manufacture/desktop/repair-a-windows-image?view=windows-11
+| del /F /Q * | https://answers.microsoft.com/pt-br/windows/forum/all/como-forçar-o-delete-de-uma-pasta-no-windows/86d37617-6ec9-4c0f-b219-0d299a6e3d42
 | wmic | https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/wmic
 
 
@@ -334,7 +338,7 @@ Abra o arquivo.bat como adiminstrador.
 
 License & Copyright
 -----------------------
-MIT License Copyright (c) 2023 ~#M?x
+`MIT License Copyright (c) 2023 ~#M?x`
 
 ![LOVE](http://ForTheBadge.com/images/badges/built-with-love.svg)
 
