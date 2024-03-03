@@ -1,26 +1,23 @@
 @echo off
 cls
 @echo.
-@echo::::::::::::::::::::::::::::::::::::::::::::
+@echo:: [!] Github:github.com/suchsoak
+@echo:: [!] V.1.0.4
+@echo:: [!] BY: suchsoak
+@echo.
 color 2
 @echo:: [*] 1. Verificar discos
-timeout 1 >null
 @echo:: [*] 2. Resetadores Netsh
 color 1
-timeout 1 > null
 @echo:: [*] 3. Systeminfo
 color 7 
 timeout 1 >null
 @echo:: [*] 4. Windows Update 
-@echo:: [*] 5. Remover marca windows 
+@echo:: [*] 5. Remover marca windows
 @echo:: [*] 6. Sair do terminal
-@echo::::::::::::::::::::::::::::::::::::::::::::
-@echo:: [!] Github:github.com/suchsoak
-@echo:: [!] V.1.0.3
-@echo:: [!] BY: suchsoak
-@echo::::::::::::::::::::::::::::::::::::::::::::
 @echo.
 set /p escolha= escolha uma opcao:
+@echo.
 if %escolha% equ 1 goto escolha1 
 if %escolha% equ 2 goto escolha2
 if %escolha% equ 3 goto escolha3
@@ -28,15 +25,30 @@ if %escolha% equ 4 goto escolha4
 if %escolha% equ 5 goto escolha5
 if %escolha% equ 6 goto escolha6
 
+
+if %escolha% equ nul (
+  @echo.
+  @echo Escolha uma opcao!!!
+  @echo.
+  @pause
+) else (
+  color 2
+  @echo.
+  @echo Opcao invalida!!!
+  @echo.
+  @pause
+  exit
+)
+
 :escolha1
 
 @echo off
 cls
 @echo.
 @echo.
-@echo -------------------------
-@echo github: https://github.com/suchsoak
-@echo -------------------------
+@echo -----------------------------------
+@echo Github: https://github.com/suchsoak
+@echo -----------------------------------
 timeout 4 >null
 @echo.
 @echo [!] informacoes de disco:
@@ -94,7 +106,7 @@ cls
 @echo  [*] Apagando Arquivos Temporarios
 @echo -------------------------
 cd %temp%
-del *
+del /F /Q *
 timeout 3 >null
 cls
 @echo.
@@ -117,30 +129,25 @@ timeout 3 >null
 @echo.
 cls
 @echo.
-@echo.
-@echo [!] caso queria fazer uma verificacao mais completa existe o comando chkdsk /r.
-@echo.
-@echo [!] Porem nesse comando seu computador precisara ser reiniciado e isso levara tempo.
-@echo.
-@echo::::::::::::::::::::::::::::::::::::::::::::--
+@echo::::::::::::::::::::::::::::::::::::::::::::
 @echo:: [!] AVISO o processo levara um tempo, dependendo da maquina.
-@echo::::::::::::::::::::::::::::::::::::::::::::-- 
+@echo::::::::::::::::::::::::::::::::::::::::::::
 @echo.
 @echo::::::::::::::::::::::::::::::::::::::::::::
-@echo:: [*] A. Executar o comando chkdsk /r
-@echo:: [*] B. Nao executar o comando
+@echo:: [*] 1. Executar o comando chkdsk /r
+@echo:: [*] 2. Nao executar o comando
 @echo:::::::::::::::::::::::::::::::::::::::::::: 
 
-set /p escolha=  escolha uma opcao: 
+set /p op=  escolha uma opcao: 
 
-if %escolha% equ A goto escolhaA
-if %escolha% equ B goto escolhaB
+if %op% equ 1 goto op1
+if %op% equ 2 goto op2
 
-:escolhaA
+:op1
 
-@echo::::::::::::::::::::::::::::::::::::::::::::
+@echo -------------------------
 @echo:: [*] chkdsk /r
-@echo:::::::::::::::::::::::::::::::::::::::::::: 
+@echo ------------------------- 
 timeout 3 >null
 chkdsk /r
 @echo.
@@ -148,7 +155,7 @@ chkdsk /r
 @echo:: [!] Por padrao, o seu computador não irar ser reiniciado depois do comando, porem e recomendavel.
 @echo::::::::::::::::::::::::::::::::::::::::::::
 
-:escolhaB
+:op2
 cls 
 @echo.
 @echo [*] Saindo Do Terminal...
@@ -169,32 +176,32 @@ cls
 @echo.
 
 @echo::::::::::::::::::::::::::::::::::::::::::::
-@echo:: [*] S. Colocar Regras De Firewall
-@echo:: [*] N. Nao Colocar Regras De Firewall
+@echo:: [*] 1. Colocar Regras De Firewall
+@echo:: [*] 2. Nao Colocar Regras De Firewall
 @echo:::::::::::::::::::::::::::::::::::::::::::: 
 
 
-set /p escolha=  escolha uma opcao: 
+set /p firewall=  escolha uma opcao: 
 
-if %escolha% == S goto escolhaS
-if %escolha% == N goto escolhaN
+if %firewall% == 1 goto firewall1
+if %firewall% == 2 goto firewall2
 
-:escolhaS
+:firewall1
 
 cls
 color 1
 @echo.
 @echo Regras De Firewall
 @echo.
+
+@echo off
+set /p porta=Coloque a porta:
+@echo. 
+@echo Porta escolhida: %porta%
+
 timeout 1 > null
-netsh advfirewall firewall add rule name="Block 22" dir=in action=block protocol=TCP localport=22 
+netsh advfirewall firewall add rule name="Block %porta%" dir=in action=block protocol=TCP localport=%porta% 
 @echo.
-timeout 1 >null
-netsh advfirewall firewall add rule name="Block 23" dir=in action=block protocol=TCP localport=23 
-@echo.
-timeout 1 >null
-@echo.
-netsh advfirewall firewall add rule name="Block 80" dir=in action=block protocol=TCP localport=80 
 timeout 3 >null
 @echo [!] Informacoes De Rede: 
 color 7
@@ -207,6 +214,8 @@ netsh wlan show interfaces | findstr "Sinal"
 netsh wlan show interfaces | findstr "Canal"
 netsh wlan show interfaces | findstr "Descrição"
 netsh wlan show interfaces | findstr "BSSID"
+netsh wlan show interfaces | findstr "Criptografia"
+netsh wlan show interfaces | findstr "Faixa"
 netsh interface ipv4 show addresses "Wi-Fi" | findstr "Endereço IP"
 timeout 3 >null
 @echo::::::::::::::::::::::::::::::::::::::::::::
@@ -253,7 +262,7 @@ cls
 @pause
 exit
 
-:escolhaN
+:firewall2
 cls
 color 4
 timeout 2 >null
@@ -268,6 +277,8 @@ netsh wlan show interfaces | findstr "Sinal"
 netsh wlan show interfaces | findstr "Canal"
 netsh wlan show interfaces | findstr "Descrição"
 netsh wlan show interfaces | findstr "BSSID"
+netsh wlan show interfaces | findstr "Criptografia"
+netsh wlan show interfaces | findstr "Faixa"
 netsh interface ipv4 show addresses "Wi-Fi" | findstr "Endereço IP"
 timeout 3 >null
 @echo::::::::::::::::::::::::::::::::::::::::::::
@@ -382,6 +393,8 @@ color 6
 timeout /t 5 > null
 @echo.
 wmic diskdrive list brief
+@echo.
+wmic partition get name,size,type
 @echo --------------------
 @echo.
 @echo [!] Informacoes da Placa De Video:
@@ -405,6 +418,12 @@ wmic baseboard get product
 @echo.
 @echo --------------------
 @echo.
+@echo [!] Informacoes da Memoria Ram:
+@echo.
+wmic memorychip get Manufacturer,Capacity,PartNumber,Speed,DeviceLocator
+echo.
+@echo --------------------
+@echo.
 @echo [!] Informacoes De Rede:
 @echo.
 timeout /t 6 > null
@@ -418,6 +437,8 @@ netsh wlan show interfaces | findstr "Sinal"
 netsh wlan show interfaces | findstr "Canal"
 netsh wlan show interfaces | findstr "Descrição"
 netsh wlan show interfaces | findstr "BSSID"
+netsh wlan show interfaces | findstr "Criptografia"
+netsh wlan show interfaces | findstr "Faixa"
 color 7
 @echo.
 @echo --------------------
@@ -505,6 +526,13 @@ wmic baseboard get product >> informacoes.txt
 @echo. >> informacoes.txt
 @echo -------------------- >> informacoes.txt
 @echo. >> informacoes.txt
+@echo [!] Informacoes da Memoria Ram: >> informacoes.txt
+@echo. >> informacoes.txt
+wmic memorychip get Manufacturer,Capacity,PartNumber,Speed,DeviceLocator >> informacoes.txt
+echo. >> informacoes.txt
+@echo. >> informacoes.txt
+@echo -------------------- >> informacoes.txt
+@echo. >> informacoes.txt
 @echo [!] Informacoes De Rede: >> informacoes.txt
 @echo. >> informacoes.txt
 color 8
@@ -517,6 +545,8 @@ netsh wlan show interfaces | findstr "Sinal" >> informacoes.txt
 netsh wlan show interfaces | findstr "Canal" >> informacoes.txt
 netsh wlan show interfaces | findstr "Descrição" >> informacoes.txt
 netsh wlan show interfaces | findstr "BSSID" >> informacoes.txt
+netsh wlan show interfaces | findstr "Criptografia" >> informacoes.txt
+netsh wlan show interfaces | findstr "Faixa" >> informacoes.txt
 color 7
 @echo. >> informacoes.txt
 @echo -------------------- >> informacoes.txt
@@ -528,11 +558,20 @@ timeout 3 >null
 @echo -------------------- 
 @echo [!] Precione Enter para sair do terminal.
 @echo -------------------- 
+
 set /p sair=
 if "%input%"==""(
   exit
 )
+
 :escolha4
+
+@echo --------------------
+@echo.
+@echo [*] github: https://github.com/suchsoak 
+@echo.
+@echo --------------------
+@echo.
 
 net stop wuauserv
 net stop bits
@@ -563,6 +602,7 @@ SC config trustedinstaller start= auto
 exit
 
 :escolha5
+
 @echo --------------------
 @echo.
 @echo [*] github: https://github.com/suchsoak 
