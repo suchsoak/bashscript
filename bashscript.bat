@@ -2,7 +2,7 @@
 cls
 @echo.
 @echo:: [!] Github:github.com/suchsoak
-@echo:: [!] V.1.0.4
+@echo:: [!] V.1.0.5
 @echo:: [!] BY: suchsoak
 @echo.
 color 2
@@ -14,7 +14,10 @@ color 7
 timeout 1 >null
 @echo:: [*] 4. Windows Update 
 @echo:: [*] 5. Remover marca windows
-@echo:: [*] 6. Sair do terminal
+@echo:: [*] 6. Resetar Drive Video
+@echo:: [*] 7. HQ CODE
+@echo:: [*] 8. Sair do terminal
+
 @echo.
 set /p escolha= escolha uma opcao:
 @echo.
@@ -24,6 +27,8 @@ if %escolha% equ 3 goto escolha3
 if %escolha% equ 4 goto escolha4
 if %escolha% equ 5 goto escolha5
 if %escolha% equ 6 goto escolha6
+if %escolha% equ 7 goto escolha7
+if %escolha% equ 8 goto escolha8
 
 
 if %escolha% equ nul (
@@ -152,7 +157,7 @@ timeout 3 >null
 chkdsk /r
 @echo.
 @echo::::::::::::::::::::::::::::::::::::::::::::
-@echo:: [!] Por padrao, o seu computador não irar ser reiniciado depois do comando, porem e recomendavel.
+@echo:: [!] Por padrao, o seu computador não irar ser reiniciado depois do comando. Porem e recomendavel.
 @echo::::::::::::::::::::::::::::::::::::::::::::
 
 :op2
@@ -227,6 +232,7 @@ timeout 3 >null
 @echo:::::::::::::::::::::::::::::::::::::::::::: 
 timeout /t 2 >null
 ipconfig /renew
+ipconfig /flushdns
 timeout /t 2 >null
 cls
 @echo::::::::::::::::::::::::::::::::::::::::::::
@@ -620,4 +626,53 @@ SLMGR.VBS /RILC
 @pause
 
 :escolha6
+
+pnputil /enum-devices /class Display | findstr "ID da Instância"
+@echo.
+@echo.
+set/p ID= Coloque a ID da Instancia:
+@echo.
+@echo.
+pnputil /restart-device "%ID%"
+
+@echo.
+set /p reiniciar= escolha uma opcao:
+@echo.
+if %reiniciar% equ s goto reiniciars 
+if %reiniciar% equ n goto reiniciarn
+
+if %reiniciar% equ nul (
+  @echo.
+  @echo Escolha uma opcao!
+  @echo.
+  @pause
+) else (
+  color 2
+  @echo.
+  @echo Opcao invalida!!
+  @echo.
+  @pause
+  exit
+)
+
+:reiniciars
+
+shutdown /r /c "O chefe mandou, vá descansar"
+
+:reiniciarn
+
+exit
+
+:escolha7
+cls
+@echo.
+@echo.
+set /p qr= Coloque o link:
+@echo.
+@echo.
+timeout 2 >null
+curl qrenco.de/%qr%
+@pause
+
+:escolha8
 exit
