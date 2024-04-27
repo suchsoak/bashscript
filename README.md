@@ -369,7 +369,7 @@ curl qrenco.de/%qr%
 
 License & Copyright
 -----------------------
-`MIT License Copyright (c) 2023 ~#M?x`
+`MIT License Copyright (c) 2024 ~#M?x`
 
 ![LOVE](http://ForTheBadge.com/images/badges/built-with-love.svg)
 
