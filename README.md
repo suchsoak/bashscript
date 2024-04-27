@@ -11,7 +11,7 @@
 **Para simplificar seu uso, tomei a decisão de combinar meus scripts bash, que antes eram separados.**
 
 >[!NOTE]
->Por enquanto a apenas 5 script. Porém, pretendo colocar mais. Enquanto isso se quiser mais opções de script vá no meu outro github com scrips escritos em powershell
+>Por enquanto a apenas 7 script. Porém, pretendo colocar mais. Enquanto isso se quiser mais opções de script vá no meu outro github com scrips escritos em powershell
 >
 >https://github.com/suchsoak/Powershell_script
 
@@ -333,6 +333,37 @@ Abra o arquivo.bat como adiminstrador.
 | del /F /Q * | https://answers.microsoft.com/pt-br/windows/forum/all/como-forçar-o-delete-de-uma-pasta-no-windows/86d37617-6ec9-4c0f-b219-0d299a6e3d42
 | wmic | https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/wmic
 
+
+</details>
+
+<details>
+
+<summary>Resetar Drive Video</summary>
+
+## Esse pequeno script vai reiniciar o drive de vídeo
+
+```sh
+pnputil /enum-devices /class Display | findstr "ID da Instância"
+pnputil /restart-device "%ID%"
+```
+### O segredo está nesses `2 comandos` que utilizando a ferramenta pnputil você pode reinicar o drive de vídeo, caso esteja tendo algum problema relacionado. ou pode muito bem utilizar o atalho do telcado `CTRL+SHIFT+WINDOWS+B`
+
+</details>
+
+<details>
+
+<summary>HR CODE</summary>
+
+### Esse pequeno script vai gerar um `hq code` do link que você fornecer.
+
+>Parte do código
+```sh
+curl qrenco.de/%qr%
+```
+
+<p align="center">
+  <img src="https://github.com/suchsoak/bashscript/blob/main/diskimg/HQCODE.png" alt="HRCODE.png">
+</p>
 
 </details>
 
