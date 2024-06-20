@@ -1,12 +1,8 @@
 # bashscript
 ![BASH](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)
 
-![WINDOWS](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-
 >[!IMPORTANT]
 > Execute o Script como Administrador
-
-### Bash scripts para facilitar sua vida e também para se divertir
 
 **Para simplificar seu uso, tomei a decisão de combinar meus scripts bash, que antes eram separados.**
 
@@ -370,9 +366,3 @@ curl qrenco.de/%qr%
 License & Copyright
 -----------------------
 `MIT License Copyright (c) 2024 ~#M?x`
-
-![LOVE](http://ForTheBadge.com/images/badges/built-with-love.svg)
-
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/m100047r)
-
