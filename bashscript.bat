@@ -679,6 +679,8 @@ curl qrenco.de/%qr%
 :escolha8
 cls
 @echo::::::::::::::::::::::::::::::::::::::::::::
+wmic OS get name
+@echo.
 @echo:: [*] 1. Windows 11 Home
 @echo:: [*] 2. Windows 11 Home N
 @echo:: [*] 3. Windows 11 Home Home Single Language
