@@ -7,7 +7,7 @@
 **Para simplificar seu uso, tomei a decisão de combinar meus scripts bash, que antes eram separados.**
 
 >[!NOTE]
->Por enquanto a apenas 7 script. Porém, pretendo colocar mais. Enquanto isso se quiser mais opções de script vá no meu outro github com scrips escritos em powershell
+>Por enquanto a apenas 8 script. Porém, pretendo colocar mais. Enquanto isso se quiser mais opções de script vá no meu outro github com scrips escritos em powershell
 >
 >https://github.com/suchsoak/Powershell_script
 
@@ -306,30 +306,6 @@ Abra o arquivo.bat como adiminstrador.
   start Verificadores.bat
 ```
 
-### Codigos Utilizados.
-
-<ul>
-<li>Sfc /ScanNow</li>
-<li>dism /online /cleanup-image /scanhealth</li>
-<li>dism /online /cleanup-image /restorehealth</li>
-<li>dism /Online /Cleanup-Image /CheckHealth</li>
-<li>chkdsk</li>  
-<li>wmic</li> 
-<li>cd %temp%</li> 
-<li>del /F /Q *</li>  
-</ul>
-
-## Documentação Dos Codigos Utilizados:
-
-| Libraries |  Links |
-| ------ | ------ |
-| verificador |   https://support.microsoft.com/pt-br/topic/use-a-ferramenta-verificador-de-arquivos-do-sistema-para-reparar-arquivos-de-sistema-ausentes-ou-corrompidos-79aa86cb-ca52-166a-92a3-966e85d4094e
-| chkdsk | https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/chkdsk?tabs=event-viewer
-| Repair | https://learn.microsoft.com/pt-br/windows-hardware/manufacture/desktop/repair-a-windows-image?view=windows-11
-| del /F /Q * | https://answers.microsoft.com/pt-br/windows/forum/all/como-forçar-o-delete-de-uma-pasta-no-windows/86d37617-6ec9-4c0f-b219-0d299a6e3d42
-| wmic | https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/wmic
-
-
 </details>
 
 <details>
@@ -362,6 +338,87 @@ curl qrenco.de/%qr%
 </p>
 
 </details>
+
+
+<details>
+
+<summary>Ativar Windows (KMS)</summary>
+
+# Ative o seu windows utilizando chave publica do KMS
+
+>Você pode utilizar essa chave pública para o seu windows, mas para uso pessoal não é altamente legal.
+
+
+### Aqui as chaves separadas
+
+```sh
+Windows Version	Product Key
+Windows 11 Home	TX9XD-98N7V-6WMQ6-BX7FG-H8Q99
+Windows 11 Home N	3KHY7-WNT83-DGQKR-F7HPR-844BM
+Windows 11 Home Home Single Language	7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH
+Windows 11 Home Country Specific	PVMJN-6DFY6-9CCP6-7BKTT-D3WVR
+Windows 11 Pro	W269N-WFGWX-YVC9B-4J6C9-T83GX
+Windows 11 Pro N	MH37W-N47XK-V7XM9-C7227-GCQG9
+Windows 11 Pro for Workstations	NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J
+Windows 11 Pro for Workstations N	9FNHH-K3HBT-3W4TD-6383H-6XYWF
+Windows 11 Pro Education	6TP4R-GNPTD-KYYHQ-7B7DP-J447Y
+Windows 11 Pro Education N	YVWGF-BXNMC-HTQYQ-CPQ99-66QFC
+Windows 11 Education	NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
+Windows 11 Education N	2WH4N-8QGBV-H22JP-CT43Q-MDWWJ
+Windows 11 Enterprise	NPPR9-FWDCX-D2C8J-H872K-2YT43
+Windows 11 Enterprise N	DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
+Windows 11 Enterprise G	YYVX9-NTFWV-6MDM3-9PT4T-4M68B
+Windows 11 Enterprise G N	44RPN-FTY23-9VTTB-MP9BX-T84FV
+Windows 11 Enterprise LTSC 2019	M7XTQ-FN8P6-TTKYV-9D4CC-J462D
+Windows 11 Enterprise N LTSC 2019	92NFX-8DJQP-P6BBQ-THF9C-7CG2H
+```
+
+### Dentro do script você terá a `opção de escolha`, escolherá qual Windows é o seu e a chave será colocada.
+
+```sh
+@echo::::::::::::::::::::::::::::::::::::::::::::
+@echo:: [*] 1. Windows 11 Home
+@echo:: [*] 2. Windows 11 Home N
+@echo:: [*] 3. Windows 11 Home Home Single Language
+@echo:: [*] 4. Windows 11 Country Specific
+@echo:: [*] 5. Windows 11 Pro
+@echo:: [*] 6. Windows 11 Pro N
+...
+```
+
+
+| Libraries |  Links |
+| ------ | ------ |
+| Windows 11 Product Keys | https://gist.github.com/sevynkooper/8e60a6038b10e57c31830f279a026bef
+| Slmgr.vbs | https://learn.microsoft.com/pt-br/windows-server/get-started/activation-slmgr-vbs-options 
+
+
+</details>
+
+
+### Codigos Utilizados.
+
+<ul>
+<li>Sfc /ScanNow</li>
+<li>dism /online /cleanup-image /scanhealth</li>
+<li>dism /online /cleanup-image /restorehealth</li>
+<li>dism /Online /Cleanup-Image /CheckHealth</li>
+<li>chkdsk</li>  
+<li>wmic</li> 
+<li>cd %temp%</li> 
+<li>del /F /Q *</li>  
+<li>slmgr /ipk</li>  
+</ul>
+
+## Documentação Dos Codigos Utilizados:
+
+| Libraries |  Links |
+| ------ | ------ |
+| verificador |   https://support.microsoft.com/pt-br/topic/use-a-ferramenta-verificador-de-arquivos-do-sistema-para-reparar-arquivos-de-sistema-ausentes-ou-corrompidos-79aa86cb-ca52-166a-92a3-966e85d4094e
+| chkdsk | https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/chkdsk?tabs=event-viewer
+| Repair | https://learn.microsoft.com/pt-br/windows-hardware/manufacture/desktop/repair-a-windows-image?view=windows-11
+| del /F /Q * | https://answers.microsoft.com/pt-br/windows/forum/all/como-forçar-o-delete-de-uma-pasta-no-windows/86d37617-6ec9-4c0f-b219-0d299a6e3d42
+| wmic | https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/wmic
 
 License & Copyright
 -----------------------
