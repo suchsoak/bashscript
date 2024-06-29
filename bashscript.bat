@@ -742,74 +742,110 @@ if %sl% equ nul (
 )
 
 :sl1
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99
 @pause
 exit
 :sl2
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk 3KHY7-WNT83-DGQKR-F7HPR-844BM
 @pause
 exit
 :sl3
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH
 @pause
 exit
 :sl4
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk PVMJN-6DFY6-9CCP6-7BKTT-D3WVR
 @pause
 exit
 :sl5
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
 @pause
 exit
 :sl6
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
 @pause
 exit
 :sl7
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J
 @pause
 exit
 :sl8
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk 9FNHH-K3HBT-3W4TD-6383H-6XYWF
 @pause
 exit
 :sl9
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk 6TP4R-GNPTD-KYYHQ-7B7DP-J447Y
 @pause
 exit
 :sl10
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk YVWGF-BXNMC-HTQYQ-CPQ99-66QFC
 @pause
 exit
 :sl11
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
 @pause
 exit
 :sl12
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ
 @pause
 exit
 :sl13
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
 @pause
 exit
 :sl14
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
 @pause
 exit
 :sl15
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk YYVX9-NTFWV-6MDM3-9PT4T-4M68B
 @pause
 exit
 :sl16
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk 44RPN-FTY23-9VTTB-MP9BX-T84FV
 @pause
 exit
 :sl17
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D
 @pause
 exit
 :sl18
+slmgr /cpky
+slmgr /skhc
 slmgr /ipk 92NFX-8DJQP-P6BBQ-THF9C-7CG2H
 @pause
 exit
