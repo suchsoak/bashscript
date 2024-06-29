@@ -408,6 +408,9 @@ Windows 11 Enterprise N LTSC 2019	92NFX-8DJQP-P6BBQ-THF9C-7CG2H
 <li>cd %temp%</li> 
 <li>del /F /Q *</li>  
 <li>slmgr /ipk</li>  
+<li>slmgr /skhc</li>  
+<li>slmgr /cpky</li>  
+ 
 </ul>
 
 ## Documentação Dos Codigos Utilizados:
