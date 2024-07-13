@@ -30,6 +30,8 @@ Este script ele irá limpar o cache da chave windows o que você terar que coloc
 
 `SLMGR.VBS /RILC`: Este comando reativa a licença de software do Windows. Ele reconstrói a licença de software no sistema, o que pode ser útil se a ativação do Windows estiver enfrentando problemas.
 
+`reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v displayntoret /t REG_QWORD /d 0 /f`: Este comando colocar um arquivo a qual retira a marca de Ativar Windows, é de extremo cuidado ter atenção nesse comando. O regedit do Windows é um dos lugares mais bem cuidadoso que a pessoa tem que ter no sistema, qualquer comando errado pode causar problemas graves no sistema. O comando em si coloca o arquivo "displaynotret", seria algo como `nota de exibição.`
+
 | Marca d'água solicitando ativação do Windows |  Link |
 | ------ | ------ |
 |  Marca windows  | https://answers.microsoft.com/pt-br/windows/forum/all/marca-d%C3%A1gua-solicitando-ativa%C3%A7%C3%A3o-do/2ca8e29c-a54c-4498-baa6-22b04aa2b81c  
@@ -410,6 +412,7 @@ Windows 11 Enterprise N LTSC 2019	92NFX-8DJQP-P6BBQ-THF9C-7CG2H
 <li>slmgr /ipk</li>  
 <li>slmgr /skhc</li>  
 <li>slmgr /cpky</li>  
+<li>reg add</li>li
  
 </ul>
 
@@ -422,6 +425,8 @@ Windows 11 Enterprise N LTSC 2019	92NFX-8DJQP-P6BBQ-THF9C-7CG2H
 | Repair | https://learn.microsoft.com/pt-br/windows-hardware/manufacture/desktop/repair-a-windows-image?view=windows-11
 | del /F /Q * | https://answers.microsoft.com/pt-br/windows/forum/all/como-forçar-o-delete-de-uma-pasta-no-windows/86d37617-6ec9-4c0f-b219-0d299a6e3d42
 | wmic | https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/wmic
+| reg add | https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/reg-add
+
 
 License & Copyright
 -----------------------
