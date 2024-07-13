@@ -624,8 +624,10 @@ Net stop Sppsvc
 CD C:\Windows\System32\SPP\Store\2.0 
 Ren Tokens.dat Tokens.old 
 SLMGR.VBS /RILC 
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v displayntoret /t REG_QWORD /d 0 /f
 @echo Agora reinicie a maquina.
 @pause
+exit
 
 :escolha6
 
