@@ -412,7 +412,8 @@ Windows 11 Enterprise N LTSC 2019	92NFX-8DJQP-P6BBQ-THF9C-7CG2H
 <li>slmgr /ipk</li>  
 <li>slmgr /skhc</li>  
 <li>slmgr /cpky</li>  
-<li>reg add</li>
+<li>Bcdedit.exe -set loadoptions ENABLE_INTEGRITY_CHECKS</li>
+<li>Bcdedit.exe -set TESTSIGNING OFF</li>
  
 </ul>
 
