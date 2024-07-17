@@ -13,7 +13,8 @@ Net stop Sppsvc
 CD C:\Windows\System32\SPP\Store\2.0 
 Ren Tokens.dat Tokens.old 
 SLMGR.VBS /RILC 
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v displayntoret /t REG_QWORD /d 0 /f
+Bcdedit.exe -set loadoptions ENABLE_INTEGRITY_CHECKS
+Bcdedit.exe -set TESTSIGNING OFF
 @echo Agora reinicie a maquina.
 @pause
 exit
