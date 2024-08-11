@@ -4,8 +4,6 @@
 >[!IMPORTANT]
 > Execute o Script como Administrador
 
-**Para simplificar seu uso, tomei a decisão de combinar meus scripts bash, que antes eram separados.**
-
 >[!NOTE]
 >Por enquanto a apenas 8 script. Porém, pretendo colocar mais. Enquanto isso se quiser mais opções de script vá no meu outro github com scrips escritos em powershell
 >
@@ -394,30 +392,9 @@ Windows 11 Enterprise N LTSC 2019	92NFX-8DJQP-P6BBQ-THF9C-7CG2H
 | Windows 11 Product Keys | https://gist.github.com/sevynkooper/8e60a6038b10e57c31830f279a026bef
 | Slmgr.vbs | https://learn.microsoft.com/pt-br/windows-server/get-started/activation-slmgr-vbs-options 
 
-
 </details>
 
-
-### Codigos Utilizados.
-
-<ul>
-<li>Sfc /ScanNow</li>
-<li>dism /online /cleanup-image /scanhealth</li>
-<li>dism /online /cleanup-image /restorehealth</li>
-<li>dism /Online /Cleanup-Image /CheckHealth</li>
-<li>chkdsk</li>  
-<li>wmic</li> 
-<li>cd %temp%</li> 
-<li>del /F /Q *</li>  
-<li>slmgr /ipk</li>  
-<li>slmgr /skhc</li>  
-<li>slmgr /cpky</li>  
-<li>Bcdedit.exe -set loadoptions ENABLE_INTEGRITY_CHECKS</li>
-<li>Bcdedit.exe -set TESTSIGNING OFF</li>
- 
-</ul>
-
-## Documentação Dos Codigos Utilizados:
+## Documentação Dos Códigos Utilizados:
 
 | Libraries |  Links |
 | ------ | ------ |
