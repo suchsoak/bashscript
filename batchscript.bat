@@ -1,8 +1,18 @@
 @echo off
 cls
+:: Verifique se o script esta sendo executado como administrador
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    @echo.
+    @echo [!] Este script precisa ser executado como administrador.
+    @echo.
+    @pause
+    exit
+)
+
 @echo.
 @echo:: [!] Github:github.com/suchsoak
-@echo:: [!] V.1.0.6
+@echo:: [!] V.1.0.7
 @echo:: [!] BY: suchsoak
 @echo.
 color 2
@@ -11,7 +21,7 @@ color 2
 color 1
 @echo:: [*] 3. Systeminfo
 color 7 
-timeout 1 >null
+timeout 2 >null
 @echo:: [*] 4. Windows Update 
 @echo:: [*] 5. Remover marca windows
 @echo:: [*] 6. Resetar Drive Video
@@ -19,33 +29,16 @@ timeout 1 >null
 @echo:: [*] 8. Ativar Windows  (KMS)
 @echo:: [*] 9. Sair do terminal
 
-
+:: Escolha de opcoes
 @echo.
 set /p escolha= escolha uma opcao:
-@echo.
-if %escolha% equ 1 goto escolha1 
-if %escolha% equ 2 goto escolha2
-if %escolha% equ 3 goto escolha3
-if %escolha% equ 4 goto escolha4
-if %escolha% equ 5 goto escolha5
-if %escolha% equ 6 goto escolha6
-if %escolha% equ 7 goto escolha7
-if %escolha% equ 8 goto escolha8
-
-
-if %escolha% equ nul (
-  @echo.
-  @echo Escolha uma opcao!!!
-  @echo.
-  @pause
-) else (
-  color 2
-  @echo.
-  @echo Opcao invalida!!!
-  @echo.
-  @pause
-  exit
+if not "%escolha%"=="" (
+    if "%escolha%" geq "1" if "%escolha%" leq "9" goto escolha%escolha%
 )
+color 04
+@echo Opcao invalida!!!
+@pause
+exit
 
 :escolha1
 
@@ -56,17 +49,28 @@ cls
 @echo -----------------------------------
 @echo Github: https://github.com/suchsoak
 @echo -----------------------------------
-timeout 4 >null
+timeout 2 >null
 @echo.
-@echo [!] informacoes de disco:
+:: Informacoes de disco
+@echo [!] Informacoes de disco:
 @echo.
-wmic diskdrive list brief
-@echo.
-@echo [!] Estado Do Disco:
-@echo.
-@echo.
-wmic diskdrive get status
-color 7
+where wmic >nul 2>&1
+if %errorlevel% equ 0 (
+    @echo [!] Estado Do Disco:
+    @echo.
+    wmic diskdrive get status
+    timeout 4 >null
+    @echo.
+    @echo [!] Detalhes Do Disco:
+    @echo.
+    wmic diskdrive list brief
+    timeout 4 >null
+) else (
+    @echo.
+    @echo [!] wmic nao encontrado
+    @echo.
+)
+
 timeout 6 >null
 cls
 @echo.
@@ -74,6 +78,7 @@ cls
 @echo:: [!] Verificadores de disco
 @echo::::::::::::::::::::::::::::::::::::::::::::
 @echo.
+:: Verificadores de disco
 @echo -------------------------
 @echo  [*] Sfc /ScanNow
 @echo -------------------------
@@ -84,22 +89,22 @@ cls
 @echo -------------------------
 @echo  [*] dism /online /cleanup-image /scanhealth
 @echo -------------------------
-timeout 2 >null
 dism /online /cleanup-image /scanhealth
+timeout 2 >null
 cls
 @echo.
 @echo -------------------------
 @echo  [*] dism /online /cleanup-image /restorehealth
 @echo -------------------------
-timeout 2 >null
 dism /online /cleanup-image /restorehealth
+timeout 5 >null
 cls
 @echo.
 @echo -------------------------
 @echo  [*] dism /Online /Cleanup-Image /CheckHealth
 @echo -------------------------
-timeout 2 >null
 dism /Online /Cleanup-Image /CheckHealth
+timeout 2 >null
 cls
 @echo.
 @echo -------------------------
