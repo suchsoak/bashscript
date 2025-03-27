@@ -1,8 +1,9 @@
 # batchscrip
-![BASH](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)
+![BATCH](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)
 
->[!IMPORTANT]
-> Execute o Script como Administrador
+
+>[!WARNING]
+> A microsoft infelizmente descontinuou o `WMIC` e o script tem o comando inserido. Esse comando funciona apenas wm versões anteriores ao `Windows 10 21h2`. Na versão 1.0.8 esse comando sairá e entrará um para todas as versão.
 
 >[!NOTE]
 >Por enquanto a apenas 8 script. Porém, pretendo colocar mais. Enquanto isso se quiser mais opções de script vá no meu outro github com scrips escritos em powershell
@@ -324,7 +325,7 @@ pnputil /restart-device "%ID%"
 
 <details>
 
-<summary>HR CODE</summary>
+<summary>QR CODE</summary>
 
 ### Esse pequeno script vai gerar um `hq code` do link que você fornecer.
 
@@ -338,7 +339,6 @@ curl qrenco.de/%qr%
 </p>
 
 </details>
-
 
 <details>
 
